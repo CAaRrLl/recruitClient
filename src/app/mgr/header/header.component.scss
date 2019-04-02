@@ -1,0 +1,22 @@
+@import "../../../constant/css-setting.scss";
+:host {
+  z-index: 4;
+}
+.main-toolbar {
+  height: 64px;
+  padding-left: 16px;
+}
+
+.more-btn {
+  height: 100%;
+  min-width: 70px;
+}
+
+.mat-icon-button {
+  margin-right: 10px;
+}
+
+
+.topbar[_ngcontent-c1]{margin-bottom:20px;position:inherit;top:0;left:0;width:100%;background-color:#23b7e5;height:115px;}
+.topbar-left[_ngcontent-c1]{float:left;margin-top:6px;width:236px;margin-left:15%;}
+.topbar-right[_ngcontent-c1]{float:right;margin-top:29px;width:250px;margin-right:15%;}

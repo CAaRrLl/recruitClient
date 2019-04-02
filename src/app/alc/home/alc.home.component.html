@@ -1,0 +1,65 @@
+<div class="usershow ">
+    <br><br>
+    <div class="panel">
+        <div style="transform: translateY(10%);">
+            <div class="avatar">
+                <img style="width:100%;" src={{userPic}}>
+            </div>
+            <label>{{alcInfo.Name}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="buttomshow">
+    <div class="weui-flex">
+        <div class="weui-flex__item" style="text-align: center;">
+            <div>
+                <img style="width:50px;" src={{this.curriculumVitae}} (click)="fillInResume()">
+            </div>
+            完善简历
+        </div>
+        <div class="weui-flex__item" style="text-align: center;">
+            <div>
+                <img style="width:50px;" src={{this.msgIcon}} (click)="checkMsg()">
+                <span *ngIf="alcInfo.NoRead != 0" class="weui-badge msgicon">{{alcInfo.NoRead}}</span>
+            </div>
+            <span class="red-point">消息通知</span>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="titlecenter" *ngIf="alcInfo.PscId<0">
+    很遗憾，您已经结束应聘。
+</div>
+
+<div class="pcsshow" >
+    <ul class="progress-tracker progress-tracker--vertical" style="width:220px;">
+        <div *ngFor="let process of showpcs;let i = index">
+            <li class="progress-step is-complete" *ngIf="process.IsShow == 1">
+                <span class="progress-marker"></span>
+                <span class="progress-text">
+                <h4 class="progress-title">{{process.Name}}</h4>
+              </span>
+            </li>
+
+            <li class="progress-step is-active" *ngIf="process.IsShow == 2">
+                <span class="progress-marker"></span>
+                <span class="progress-text">
+                <h4 class="progress-title">{{process.Name}}</h4>
+              </span>
+            </li>
+
+            <li class="progress-step" *ngIf="process.IsShow == 3">
+                <span class="progress-marker"></span>
+                <span class="progress-text">
+                <h4 class="progress-title">{{process.Name}}</h4>
+                </span>
+            </li>
+
+            <li class="progress-step" *ngIf="i+1 != showpcs.length">
+                <span class="after"></span>
+            </li>
+        </div>
+    </ul>
+</div>

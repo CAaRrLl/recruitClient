@@ -1,0 +1,74 @@
+
+<mat-card>
+  <h1 class="title">广州大学{{collegeName}}“{{projectName}}”材料提交自查表</h1>
+  <mat-card-title>人才基本信息</mat-card-title>
+  <mat-card-content>
+    <!--表格-->
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="packedData">
+        <ng-container matColumnDef="pro">
+          <mat-header-cell *matHeaderCellDef style="max-width: 60px;margin:10px;">流程</mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 60px;margin:10px;"> {{element.pro}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="desc">
+          <mat-header-cell *matHeaderCellDef style="max-width: 20%;margin:10px;">流程解释</mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 20%;margin:10px;"> {{element.desc}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="kind">
+          <mat-header-cell *matHeaderCellDef style="max-width: 60px;margin:10px;"> 形式 </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 60px;margin:10px;"> {{element.kind}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="key">
+          <mat-header-cell *matHeaderCellDef style="max-width: 25%;margin:20px;"> 内容要点 </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 25%;margin:20px;"> {{element.key}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="files">
+          <mat-header-cell *matHeaderCellDef style="max-width: 25%;"> 提交人事处的资料 </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 25%;">
+            <div *ngFor="let f of element.files">
+              {{f}}
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="operator">
+          <mat-header-cell *matHeaderCellDef style="margin:20px;max-width: 25%"> 操作 </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="margin:20px;max-width: 25%;">
+            <div *ngFor="let o of element.operator;let i=index;" (click)="(o.downOrUpload || o.name=='填写/下载引进情况表' || o.name=='填写/下载情况汇总表')?o.action(element.operator[i].sha256):uf.click()" style="cursor: pointer;">
+              <mat-icon style="padding-top:5px;">{{o.downOrUpload?'file_download':'file_upload'}}</mat-icon>{{o.name}}
+              <input type="file" style="visibility: hidden;" #uf (change)="upload(o,uf)" accept="image/gif,image/png,image/jpeg,image/jpg,.doc,.docx">
+            </div>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="finish">
+          <mat-header-cell *matHeaderCellDef style="max-width: 100px;"> 是否完成 </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="max-width: 100px;">
+            <mat-slide-toggle *ngFor="let o of element.operator;let i = index;" [checked]="o.finish" (change)="finish(o,st)" #st>{{o.finish?'完成':'未完成'}}</mat-slide-toggle>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="['pro','desc','kind','key','files','operator','finish']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['pro','desc','kind','key','files','operator','finish'];"></mat-row>
+      </mat-table>
+    </div>
+    <!--表格 end-->
+  </mat-card-content>
+  <mat-grid-tile-footer *ngIf="projectName==='百人计划'">
+    注：学院已严格按照《广州大学“百人计划”人才引进办法（试行）》等相关的人才引进政策和流程对应聘候选人做了筛选、甄别和考察，其学历学位、专业技术资格（职务）、任职资格、论文、科研项目、专利、奖项等相关佐证均与其填报的《广州大学“百人计划”人才申请表》相符，特此声明。
+  </mat-grid-tile-footer>
+  <mat-grid-tile-footer *ngIf="projectName==='新进讲师'">
+    学院已严格按照《广州大学新进讲师聘用办法（试行）》等相关的人才引进政策和流程对应聘候选人做了筛选、甄别和考察，其学历学位、专业技术资格（职务）、任职资格、论文、科研项目、专利、奖项等相关佐证均与其填报的《广州大学新进讲师申请表》相符，特此声明。
+  </mat-grid-tile-footer>
+  <mat-card-actions fxLayoutAlign="end" style="height: 75px;">
+    <div fxLayoutAlign="end">
+      <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==7" (click)="onSubmit()"><mat-icon>cloud_upload</mat-icon>确定提交</button>
+      <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==8" (click)="onPass()" ><mat-icon>check</mat-icon>审核通过</button>
+      <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==8" (click)="onReview()"><mat-icon>keyboard_return</mat-icon>打回修改</button>
+      <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==8" (click)="refuse()"><mat-icon>cancel</mat-icon>拒绝</button>
+      <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==8" (click)="onDownloadMult()"><mat-icon>cloud_download</mat-icon>下载附件</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

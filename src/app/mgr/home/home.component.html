@@ -1,0 +1,20 @@
+<mat-sidenav-container class="home-container">
+  <!--导航侧栏-->
+  <mat-sidenav class="sidenav" [mode]="'over'" #sidenav>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <!--导航侧栏 end-->
+  <!--内容区-->
+  <div class="sidenav-container" fxLayoutAlign="top" fxLayout="column">
+    <app-header [sidenav]="sidenav"></app-header>
+    <div class="main-container" #scrollContainer>
+      <router-outlet></router-outlet>
+      <app-left-side (onOpened)="onOpenedTriggered($event)"></app-left-side>
+    </div>
+  </div>
+  <!--内容区 end-->
+</mat-sidenav-container>
+<app-alert></app-alert>
+<app-modal-dialog #modal></app-modal-dialog>
+<app-toast></app-toast>
+<progress-spinner></progress-spinner>

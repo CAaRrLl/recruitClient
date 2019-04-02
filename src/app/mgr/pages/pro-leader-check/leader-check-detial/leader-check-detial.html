@@ -1,0 +1,40 @@
+<div>
+  <mat-card>
+    <mat-card-title>校领导审阅</mat-card-title>
+    <mat-card-subtitle>审核对象<span style="margin-left: 4%;color: #9C0006">{{alcData.Name}}</span></mat-card-subtitle>
+    <mat-card-content>
+      <div style="height: 60vh;overflow: scroll">
+        <mat-card *ngIf="readType === 1">
+          <form>
+          <mat-form-field style="width: 100%">
+            <mat-select placeholder="岗位类别" [(ngModel)]="alcData.PositionKind" name="PositionKind">
+              <mat-option *ngFor="let PositionKind of PositionKinds" [value]="PositionKind">
+                {{PositionKind}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+            <cst-input [item]="item_HirePosition"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_Salary"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_ScienceMoney"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_HouseMoney"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_HirePosition"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_HireTime"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_MetorKind"  [readonly]="mgrReview"></cst-input>
+            <cst-input [item]="item_Tips_brjh" [readonly]="mgrReview"></cst-input>
+          </form>
+        </mat-card>
+
+        <mat-card *ngIf="readType === 2">
+          <cst-input [item]="item_Allowance"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_Tips_xjjs" [readonly]="mgrReview"></cst-input>
+        </mat-card>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div align="center">
+        <button mat-raised-button color="primary" (click)="onSubmitData()">确定</button>
+        <button mat-raised-button color="primary" (click)="onCancel()">取消</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

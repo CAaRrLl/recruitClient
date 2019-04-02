@@ -1,0 +1,67 @@
+.my-checkbox{
+  height: 20px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 9px;
+  margin-right: 10px;
+  position: relative;
+}
+.my-checkbox-ios{
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+.my-checkbox:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  border-radius: 4px;
+  padding: 11px;
+  border: 1.2px solid #cdcdcd;
+  transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+}
+.my-checkbox:checked:before{
+  content: '\E800';
+  font-family: 'CheckFont';
+  padding: 5px;
+  background-color: #4d63dc;
+  font-size: 13px;
+}
+.my-checkbox-span{
+  margin-top: 3px;
+  line-height: 25px;
+  margin-left: 10px;
+}
+.my-checkbox-span-ios{
+  margin-top: 3px;
+  line-height: 25px;
+  margin-left: 30px;
+}
+.my-checkbox-label{
+  display: flex;
+  padding-bottom: 10px;
+}
+.my-checkbox-label-ios{
+  display: flex;
+  position: relative;
+}
+.my-expansion-span{
+  width: 100%;
+  text-align: right;
+}
+@font-face {
+  font-family: 'CheckFont';
+  src: url('../../../assets/font/checkfont.eot?21881841');
+  src: url('../../../assets/font/checkfont.eot?21881841#iefix') format('embedded-opentype'),
+  url('../../../assets/font/checkfont.woff2?21881841') format('woff2'),
+  url('../../../assets/font/checkfont.woff?21881841') format('woff'),
+  url('../../../assets/font/checkfont.ttf?21881841') format('truetype'),
+  url('../../../assets/font/checkfont.svg?21881841#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

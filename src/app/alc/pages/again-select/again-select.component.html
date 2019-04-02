@@ -1,0 +1,19 @@
+<div class="again-select-body">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle style="margin-bottom: 0px">
+        <div class="again-select-hi"></div>
+        <span>“关于您，我们想了解更多... ...”</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <div class="again-select-content">
+    <h4 style="text-align: center;">{{viewJson.type}}</h4>
+    <multi-select *ngFor="let item of viewJson.form" [data]="item" (other)="selectOther($event)"></multi-select>
+    <button mat-raised-button class="again-select-submit" (click)="submit()">提交</button>
+    <div class="again-select-bottom">
+      <p class="aware"><a style="color: #565656;" href="{{bookHtml}}">广州大学权威期刊目录</a></p>
+      <p class="copyright">Copyright © 广州大学</p>
+    </div>
+  </div>
+</div>

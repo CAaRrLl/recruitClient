@@ -1,0 +1,59 @@
+.date-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.time-input-style{
+  width: 22%;
+  color: blue;
+  /*display: inline-block;*/
+}
+
+.btn-margin{
+  margin-right: 4%
+}
+
+.msg-font-size{
+  font-size: 18px
+}
+.span-style{
+  color: blue;
+  font-style: italic;
+}
+
+.used-text {
+  cursor: cell;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 25px;
+  box-shadow: 0px 0px 0px #3F3F3F;
+  margin-bottom: 10px;
+}
+
+.used-text-action {
+  -webkit-transition: box-shadow 0.6s;
+  transition: box-shadow 0.6s;
+}
+
+.used-text-over:hover {
+  box-shadow: 1px 2px 2px #3F3F3F;
+}
+
+.date-line-tip{
+  display: inline-block;
+  height: 100%;
+  line-height:1.5;
+}
+.date-line-input{
+    border-bottom: 1px solid;
+    line-height: 2;
+    text-align: center;
+    height: 100%
+}

@@ -1,0 +1,27 @@
+<h1 class="title">广州大学"{{projectName}}"人才引进情况表</h1>
+<mat-card>
+  <mat-card-actions fxLayoutAlign="end" style="height: 75px;">
+    <input type="file" style="visibility: hidden;" #muf (change)="multUpload(muf)" multiple accept="image/gif,image/png,image/jpeg,image/jpg,.doc,.docx">
+    <button mat-raised-button (click)="goback()"><mat-icon>arrow_back</mat-icon>返回</button>
+    <button mat-raised-button *ngIf="curPcs!==14" (click)="downForm()"><mat-icon>cloud_download</mat-icon>{{selectItems.length>0?'下载表格（'+selectItems.length+'）':'下载表格'}}</button>
+    <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==14" (click)="allPass()" ><mat-icon>check</mat-icon>全部通过</button>
+    <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==14" (click)="allRefuse()"><mat-icon>cancel</mat-icon>全部拒绝</button>
+    <button mat-raised-button class="btn btn btn-default" *ngIf="curPcs==14" (click)="muf.click()"><mat-icon>file_upload</mat-icon>上传附件</button>
+  </mat-card-actions>
+  <mat-card-subtitle fxLayoutAlign="end" *ngIf="curPcs==14" >需要上传的文件包括《专家组会议》、《跨部门会议》、《请示》</mat-card-subtitle>
+  <mat-card-title>人才基本信息</mat-card-title>
+  <mat-card-content>
+    <app-table [columns]="columns" [pcontrol]="pcontrol" [selectChange]="selectChange" [pageChange]="pageChange" [setData]="setData"></app-table>
+  </mat-card-content>
+  <mat-grid-tile-footer *ngIf="projectName==='百人计划'">
+      填写说明：1.“人才类型”是指引进人才入选各类人才计划名称或称号，如长江学者特聘教授等； <br/>
+      2.“岗位类别”是指我校“百人计划”领军人才、学科带头人、学术带头人、青年杰出人才（A类）和青年杰出人才（B类）； <br/>
+      3.“其他要求”是指双方协商过程中提出其配套支持条件或需学校解决的相关问题； <br/>
+      4.“薪酬、科研启动费、购房补贴”单位为“万元”; <br/>
+      5. “聘期”五年； <br/>
+      6.“聘任专业技术级别”是指在原单位聘任专业技术级别，如专业技术四级。<br/>
+  </mat-grid-tile-footer>
+  <mat-grid-tile-footer *ngIf="projectName==='新进讲师'">
+    学院已严格按照《广州大学新进讲师聘用办法（试行）》等相关的人才引进政策和流程对应聘候选人做了筛选、甄别和考察，<br>其学历学位、专业技术资格（职务）、任职资格、论文、科研项目、专利、奖项等相关佐证均与其填报的《广州大学新进讲师申请表》相符，特此声明。
+  </mat-grid-tile-footer>
+</mat-card>

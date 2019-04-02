@@ -1,0 +1,20 @@
+<mat-expansion-panel (opened)="OpenState = true"
+                     (closed)="OpenState = false" [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{data.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <span class="my-expansion-span">{{OpenState ? '请选择' : '请点击'}}</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div *ngFor="let option of data.optionMoreValue">
+    <label class="{{isIos()?'my-checkbox-label-ios':'my-checkbox-label'}}">
+      <input type="checkbox" class="{{isIos()?'my-checkbox-ios':'my-checkbox'}}"
+             (change)="selectChange($event.target)"
+             [checked]="setChecked(option)"
+             [value]="option">
+      <span class="{{isIos()?'my-checkbox-span-ios':'my-checkbox-span'}}">{{option}}</span>
+    </label>
+  </div>
+</mat-expansion-panel>

@@ -1,0 +1,3 @@
+// 设置assets请求资源前缀，反向代理时用到。
+$assetsPre: '/assets/'     //调试环境
+//$assetsPre: 'http://cst.gzhu.edu.cn/recruitMgr/assets/'  //生产环境，xxx是反向代理前缀

@@ -1,0 +1,39 @@
+<div *ngFor="let itemArray of item.childComps;let i = index">
+
+  <!-- 小标题 -->
+  <mat-chip-list>
+    <mat-chip color="primary" style="padding: 5px 20px;border-radius: 15px;margin: 10px auto">第 {{i+1}} 项</mat-chip>
+  </mat-chip-list>
+
+  <!-- 小项 -->
+  <div *ngFor="let childItem of itemArray;let j = index">
+    <cst-input *ngIf="childItem.type==='text'||childItem.type==='email'||childItem.type==='number'" 
+      [item]="childItem" 
+      (inputBlur)="onBlur($event)" 
+      [readonly]="readonly">
+    </cst-input>
+    <cst-datepicker *ngIf="childItem.type==='date'" 
+      [item]="childItem" 
+      (inputBlur)="onBlur($event)" 
+      [readonly]="readonly">
+    </cst-datepicker>
+    <cst-select *ngIf="childItem.type==='radio' && childItem.name==='经历类型'" 
+      [item]="childItem" [idx]="i" 
+      (experience)="onExprTypeChange($event)" 
+      (inputBlur)="onBlur($event)" 
+      [readonly]="readonly">
+    </cst-select>
+    <cst-select *ngIf="childItem.type==='radio' && childItem.name!=='经历类型'" 
+      [item]="childItem" 
+      (inputBlur)="onBlur($event)" 
+      [readonly]="readonly">
+    </cst-select>
+  </div>
+
+</div>
+
+<!-- 添加和删除 -->
+<div class="button-row" style="text-align: center" *ngIf="!readonly">
+  <button *ngIf="item.childComps.length > 0" mat-button color="warn" (click)="onDeleteClick()">删除</button>
+  <button mat-button color="primary" (click)="onAddClick()" *ngIf="isAddShow()">添加</button>
+</div>

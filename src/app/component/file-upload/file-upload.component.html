@@ -1,0 +1,40 @@
+<div class="file-header" *ngIf="item">
+  <h4 style="width: 109px;font-weight: 100">{{item.name}}</h4>
+  <!-- <button mat-button color="primary" style="margin: 0">
+      添加文件
+      <input type="file" class="select-file"/>
+  </button> -->
+
+  <input type="file" id="{{item.name}}" #selectFile style="display: none" (change)="onFileChange($event)">
+
+  <label style="color: #3f51b5;" for="{{item.name}}" *ngIf="!readonly && getContentCount() <= item.numberLimit-1">
+    添加文件
+  </label>
+  <label style="color: #3f51b5;" *ngIf="getContentCount() > 0" (click)="onDownloadFile()">
+    下载文件
+  </label>
+
+</div>
+
+<div class="file-body" *ngIf="item">
+  <mat-list>
+    <mat-list-item *ngFor="let fileName of item.optionValue;let i=index">
+      <img *ngIf="getFileType(fileName).type === 'image'" style="max-width: 50px;" [src]="getImgUrl(i)" (click)="onClickImgBtn(i)"
+      />
+      <mat-icon mat-list-icon *ngIf="getFileType(fileName).type === 'image'" (click)="onClickImgBtn(i)">
+        photo
+      </mat-icon>
+      <mat-icon mat-list-icon *ngIf="getFileType(fileName).type === 'file'">insert_drive_file</mat-icon>
+      <h4 mat-line>{{fileName}}</h4>
+      <p mat-line>{{fileStatus[i]}}</p>
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onDeleteFile(i)" *ngIf="!readonly">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>
+
+<div class="mask" *ngIf="maskCtrl" (click)="onClickMask()">
+  <img [src]="maskImg">
+</div>

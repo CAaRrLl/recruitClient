@@ -1,0 +1,22 @@
+<div *ngIf="state" id="alt" class="ngdialog ngdialog-theme-default ng-scope" role="alertdialog" [hidden]="hidden">
+  <div class="ngdialog-overlay" (click)="click_outside();"></div>
+  <div class="ngdialog-content" role="document">
+    <div class="page-dialog-wrap">
+      <div class="page-dialog-content">
+        <!--内容区-->
+        <!--消息提示框，标题，内容，确定，取消，关闭-->
+        <div class="mgb-l ng-binding">
+          <p *ngIf="state.title" style="color: #000;margin-top:-6px;position: fixed;top:20px;left:20px;">{{state.title}}</p>
+          <p>{{state.content}}</p>
+        </div>
+        <div class="text-center pd-v-s">
+          <button *ngIf="state.cancelEvn" type="button" class="btn btn-gray" (click)="clickCancel();">取消</button>
+          <button *ngIf="state.confirmEvn" class="btn btn-blue" (click)="clickConfirm();">确定</button>
+          <button *ngFor="let btn of state.buttons;let i = index" class="btn btn-blue" [ngStyle]="{'background-color':btn.color,'margin-right':i!=state.buttons.length-1?'5px':'unset'}" (click)="btn.handle()">{{btn.name}}</button>
+        </div>
+        <!--内容区-->
+      </div>
+    </div>
+    <div *ngIf="state.closeEvn" class="ngdialog-close" (click)="close();"></div>
+  </div>
+</div>

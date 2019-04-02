@@ -1,0 +1,34 @@
+<div>
+  <mat-card>
+    <mat-card-title>{{pcsName}}</mat-card-title>
+    <mat-card-subtitle *ngIf="pcsid === 19">注意：商调函有效期为三个月</mat-card-subtitle>
+    <mat-card-content>
+      <!--上传、查看商调函-->
+      <div *ngIf="(message.Status === 8 && message.MsgType === 2)|| pcsid === 24">
+        <mat-card>
+          <cst-input [item]="item_UserName"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_NowWorkPlace"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_Address"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_Phone"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_Email"  [readonly]="mgrReview"></cst-input>
+          <cst-input [item]="item_Identity"  [readonly]="mgrReview"></cst-input>
+        </mat-card>
+      </div>
+      <!--上传、查看计划生育证明-->
+      <div *ngIf="((message.Status === 8 && message.MsgType === 5)|| pcsid === 30)&&isshow === true ">
+        <cst-file-upload [item]="item_familyCertificate" [readonly]="mgrReview"></cst-file-upload>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div *ngIf="pcsid === 24 || pcsid === 30" align="center">
+      <button mat-button (click)="onOperating(1)">通过</button>
+      <button mat-button (click)="onOperating(2)">打回修改</button>
+      <button mat-button (click)="onOperating(3)">拒绝</button>
+      </div>
+      <div *ngIf="pcsid === 19 || pcsid === 29" align="center">
+        <button mat-raised-button color="primary" (click)="onSubmitData()">提交数据</button>
+        <button mat-raised-button color="primary" (click)="showGiveUpMask()">放弃应聘</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-actions fxLayoutAlign="end" style="height: 75px;">
+    <button mat-raised-button (click)="postPcsData()"><mat-icon>cloud_upload</mat-icon>一键提交</button>
+  </mat-card-actions>
+  <mat-card-title>校领导审阅-新进讲师</mat-card-title>
+  <mat-card-content>
+    <app-table [columns]="columns" [pcontrol]="pcontrol" [selectChange]="selectChange" [pageChange]="pageChange" [setData]="setData"></app-table>
+  </mat-card-content>
+  <h1 style="text-align: center;color: grey;" *ngIf="pcontrol.length<=0">列表为空!</h1>
+</mat-card>

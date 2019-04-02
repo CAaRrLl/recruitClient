@@ -1,0 +1,17 @@
+<mat-card style="padding-top: 25px" *ngIf="item">
+  <!-- <h4 class="avatarTitle">证件照</h4> -->
+  <input type="file" id="avatarFile" 
+    style="display: none" 
+    (change)="onFileChange($event)">
+  <mat-card-content style="text-align: center">
+    <img class="avatarImg" [src]="srcImg" (click)="onClickImg()">
+    <label class="avatarLabel" style="color: #3F51B5;" for="avatarFile" *ngIf="!readonly">
+      选择证件照
+    </label>
+    <p class=".avatarLabel" style="margin: 0;color: #9c9c9c">{{imgStatus}}</p>
+  </mat-card-content>
+</mat-card>
+
+<div class="mask" *ngIf="maskCtrl" (click)="onClickMask()">
+  <img [src]="maskImg">
+</div>

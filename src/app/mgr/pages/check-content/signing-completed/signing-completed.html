@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<div *ngIf="pcsid === 18">
+  <mat-card align="center">
+    <mat-card-title>{{pcsName}}</mat-card-title>
+    <mat-card-content>
+      <cst-file-upload [item]="item"></cst-file-upload>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="onSubmit()">确定</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

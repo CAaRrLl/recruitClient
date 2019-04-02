@@ -1,0 +1,94 @@
+<div style="padding: 10px 10px; background: #eaeaea;"
+  [ngStyle]="getResumeHeight()">
+
+  <h2 style="font-weight: 200; margin: 8px 30px">简历</h2>
+
+  <cst-avatar [item]="formJson[1]" (inputBlur)="onBlur($event,'avatar',1)" [readonly]="getReadonly(1)"></cst-avatar>
+
+  <div style="margin: 10px 0"></div>
+
+  <mat-accordion multi="true">
+
+    <mat-expansion-panel *ngFor="let groupName of cardConfig">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{renderConfig[groupName].name}}
+        </mat-panel-title>
+        <mat-panel-description style="color: #c12529">
+          {{renderConfig[groupName].msg}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let idx of renderConfig[groupName].index; let i=index">
+
+        <cst-input *ngIf="formJson[idx]
+          &&formJson[idx].type==='radio'
+          &&formJson[idx].name==='博士后单位'" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)" [item]="formJson[idx]">
+
+        </cst-input>
+
+        <cst-input *ngIf="formJson[idx]
+          &&(formJson[idx].type==='text'
+          ||formJson[idx].type==='number'
+          ||formJson[idx].type==='email'
+          ||formJson[idx].type==='text-area')" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)"
+          [item]="formJson[idx]">
+        </cst-input>
+
+        <cst-select *ngIf="formJson[idx]
+          &&formJson[idx].type==='radio'
+          &&formJson[idx].name!=='博士后单位'" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)" [item]="formJson[idx]">
+        </cst-select>
+
+        <cst-datepicker *ngIf="formJson[idx]
+          &&formJson[idx].type==='date'" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)" [item]="formJson[idx]">
+        </cst-datepicker>
+
+        <cst-checkbox *ngIf="formJson[idx]
+          &&formJson[idx].type==='checkbox'" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)" [item]="formJson[idx]">
+        </cst-checkbox>
+
+        <cst-add-able *ngIf="formJson[idx]
+          &&(formJson[idx].type==='experience'
+          ||formJson[idx].type==='scientific-effort'
+          ||formJson[idx].type==='scientific-prize'
+          ||formJson[idx].type==='thesis-work'
+          ||formJson[idx].type==='childs-info'
+          ||formJson[idx].type==='patent-info')" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)"
+          [item]="formJson[idx]">
+        </cst-add-able>
+
+        <cst-file-upload *ngIf="formJson[idx]
+          &&formJson[idx].type==='file-upload'" [readonly]="getReadonly(idx)" (inputBlur)="onBlur($event,groupName,idx)"
+          [item]="formJson[idx]">
+        </cst-file-upload>
+      </div>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <div style="height: 35px;padding-top: 8px" *ngIf="!allReadonly && readonlyInfo.level===7">
+    <button mat-raised-button style="width: 100%;height: 100%" (click)="onSave()">保存</button>
+  </div>
+  <div style="height: 35px;padding-top: 8px" *ngIf="!allReadonly && readonlyInfo.level===7">
+    <button mat-raised-button color="primary" style="width: 100%;height: 100%" (click)="onSummit()">提交</button>
+  </div>
+
+</div>
+
+<div style="padding-top: 8px; text-align: right">
+  <button mat-raised-button color="primary" 
+    (click)="onClickPass()"
+    *ngIf="showActions && (readonlyInfo.level===6 || readonlyInfo.level===1)">通过</button>
+  <button mat-raised-button 
+    (click)="onClickModify()"
+    *ngIf="showActions && (readonlyInfo.level===6 || readonlyInfo.level===1)">打回修改</button>
+  <button mat-raised-button 
+    (click)="onClickDeny()"
+    *ngIf="showActions && (readonlyInfo.level===6 || readonlyInfo.level===1)">拒绝</button>
+  <button mat-raised-button 
+    (click)="onDownloadResume()"
+    *ngIf="readonlyInfo.pcsId === 3 
+      && !(readonlyInfo.level < 1 && readonlyInfo.level > 8 || readonlyInfo.level === 7)">下载简历</button>
+</div>

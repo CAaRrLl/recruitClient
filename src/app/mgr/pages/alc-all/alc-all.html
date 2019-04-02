@@ -1,0 +1,35 @@
+
+<mat-card>
+  <mat-card-title>筛选</mat-card-title>
+  <mat-card-content>
+    <!--搜索-->
+    <div class="search mat-elevation-z2" fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon>search</mat-icon>
+      </div>
+      <input fxFlex type="search" autocomplete="off" spellcheck="false" placeholder="姓名/招聘计划/学院" [(ngModel)]="inputValue">
+    </div>
+    <!--搜索end-->
+    <mat-list class="mat-elevation-z2">
+      <mat-list-item *ngFor="let r of rows">
+        <div style="width: 70px;height: 70px; background: #237799; border-radius: 35px; text-align: center; text-overflow: ellipsis;white-space: nowrap;" matListAvatar>
+          <h3 matTooltip="{{r.name}}" mat-line><b>{{r.name}}</b></h3>
+        </div>
+        <h3 mat-line>{{r.pcstype+':'+r.job}}</h3>
+        <p mat-line>{{r.step}}</p>
+        <p style="text-align: left;width: 200px;cursor: pointer;" (click)="seePro(r)"><mat-icon>show_chart</mat-icon>查看流程</p>
+        <p style="text-align: left;width: 200px;cursor: pointer;text-align: left" (click)="seeReview(r)"><mat-icon>list</mat-icon>查看简历</p>
+        <p mat-line class="subline">{{r.employer}}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <h1 style="text-align: center;color: grey;" *ngIf="length<=0">list is empty!</h1>
+  <!--分页-->
+  <mat-paginator
+    [length]="length"
+    [pageSize]="size"
+    (page)="onPageChange()"
+    [pageSizeOptions]="options">
+  </mat-paginator>
+  <!--分页 end-->
+</mat-card>

@@ -1,0 +1,29 @@
+<mat-form-field class="form-field" *ngIf="item">
+  <input matInput 
+        [placeholder]="item.name" 
+        [formControl]="formControl"
+        [maxLength]="item.numberLimit"
+        [(ngModel)]="item.content[0]"
+        (blur)="onBlur()">
+  <button mat-button *ngIf="item.content[0] && !readonly" matSuffix mat-icon-button aria-label="Clear" (click)="item.content[0]=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-error *ngIf="formControl.hasError('required')">
+    必填
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field class="form-field" *ngIf="!item">
+  <input matInput 
+    [placeholder]="name" 
+    [formControl]="formControl"
+    [maxLength]="numberLimit"
+    [(ngModel)]="content">
+<button mat-button *ngIf="content && !readonly" matSuffix mat-icon-button aria-label="Clear" (click)="content=''">
+  <mat-icon>close</mat-icon>
+</button>
+<mat-error *ngIf="formControl.hasError('required')">
+  必填
+</mat-error>
+</mat-form-field>
+

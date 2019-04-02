@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<div *ngIf="pcsid === 16"class="div-margin">
+  <mat-card *ngIf="statusCode === 1 || statusCode === 0" align="center">
+    <mat-card-title>
+     {{pcsName}}
+    </mat-card-title>
+    <mat-card-subtitle align="left">
+      校领导审阅结果：<span class="span-style">通过</span>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-card-subtitle align="left">
+      <p class="p-margin">请点击确定通知应聘者当前状态。<span *ngIf="statusCode === 1">并且及时发送通知给应聘者协商体检事宜。</span></p>
+      </mat-card-subtitle>
+      <button mat-button  (click)="makeSure()">确定</button>
+    </mat-card-content>
+  </mat-card>
+</div>

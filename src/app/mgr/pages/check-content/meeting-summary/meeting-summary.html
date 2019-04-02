@@ -1,0 +1,30 @@
+<div *ngIf="pcsid === 14" class="div-margin">
+  <mat-card align="center">
+    <mat-card-title>
+      {{pcsName}}
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+      <mat-form-field>
+        <mat-select [(value)]="selected" (valueChange)="onSelectChange()">
+          <mat-option value="none" disabled>请选择</mat-option>
+          <mat-option value="accept">通过</mat-option>
+          <mat-option value="refuse">拒绝</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <!-- 文件上传 -->
+      <div *ngIf="passPcs === true" align="left">
+        <mat-card-subtitle>需上传的文件有《专家组会议》、《跨部门会议》、《请示》</mat-card-subtitle>
+        <cst-file-upload [item]="item" [readonly]="isReadlyOnly"></cst-file-upload>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="modifySummaryTable()">修改汇总表</button>
+      <button mat-button  (click)="makeSure()">确定</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+

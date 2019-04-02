@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>{{admin?.name}}</mat-card-title>
+  <mat-card-content>
+    <mat-form-field fxLayout="row" *ngIf="false" >
+      <mat-select placeholder="工作部门" [(ngModel)]="workplace">
+        <mat-option style="z-index: 1000;" *ngFor="let option of workplaces" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxLayout="row">
+      <mat-select placeholder="管理员类型" [(ngModel)]="typeName">
+        <mat-option style="z-index: 1000;" *ngFor="let option of types" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row">
+    <button mat-raised-button fxLayout="center" (click)="cancel()"><mat-icon>cancel</mat-icon>取消</button>
+    <button mat-raised-button fxLayout="center" (click)="setInfo()"><mat-icon>confirm</mat-icon>提交</button>
+  </mat-card-actions>
+</mat-card>

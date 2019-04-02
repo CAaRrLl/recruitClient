@@ -1,0 +1,60 @@
+.processTip{
+  position: absolute;
+  font-size: 10px;
+  width: auto;
+  height: auto;
+  color: #757575;
+  margin-top: -20px;
+  margin-left: -16px;
+  background-color: rgba(139, 69, 19, 0);
+}
+.processName{
+  width: auto;
+  height: auto;
+  margin-top: -8px;
+  margin-left: -16px;
+  background-color: rgba(139, 69, 19, 0);
+  padding: 10px 15px;
+  font-size: 15px;
+}
+.mat-step-header .mat-step-icon {
+  background-color: black;
+}
+.data-p{
+  font-size: 10px;
+  padding: 0px;
+  color: #676666;
+}
+.my-mat-step-icon{
+  background-color: #2182d0;
+  color: rgba(255,255,255,.87);
+  border-radius: 50%;
+  height: 28px;
+  font-size: 16px;
+  width: 28px;
+  position: absolute;
+  margin-top: 22px;
+  margin-left: 22px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.my-mat-step-icon-cur{
+  background-color: #7aacd4;
+}
+.my-mat-step-icon-grey{
+  background-color: #7b7b7b;
+}
+.my-mat-step-click{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

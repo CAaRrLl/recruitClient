@@ -1,0 +1,39 @@
+<mat-form-field *ngIf="item">
+  <textarea matInput 
+            #message
+            [placeholder]="item.name"
+            matTextareaAutosize 
+            [maxLength]="item.numberLimit"
+            [formControl]="formControl"
+            matAutosizeMinRows="3"
+            matAutosizeMaxRows="3"
+            [(ngModel)]="item.content[0]"
+            (blur)="onBlur()"></textarea>
+  <button mat-button *ngIf="item.content[0] && !readonly" matSuffix mat-icon-button aria-label="Clear" (click)="item.content[0]=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-hint align="end">{{message.value.length}} / {{item.numberLimit}}</mat-hint>
+  <mat-error *ngIf="formControl.hasError('required')">
+    {{hint}}必填
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field *ngIf="!item">
+  <textarea matInput 
+            #message
+            [placeholder]="name"
+            matTextareaAutosize 
+            [maxLength]="numberLimit"
+            [formControl]="formControl"
+            matAutosizeMinRows="3"
+            matAutosizeMaxRows="3"
+            [(ngModel)]="content"
+            (blur)="onBlur()"></textarea>
+  <button mat-button *ngIf="content" matSuffix mat-icon-button aria-label="Clear" (click)="content=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-hint align="end">{{message.value.length}} / {{numberLimit}}</mat-hint>
+  <mat-error *ngIf="formControl.hasError('required')">
+    {{hint}}必填
+  </mat-error>
+</mat-form-field>

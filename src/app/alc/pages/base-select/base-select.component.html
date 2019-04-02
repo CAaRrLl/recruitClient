@@ -1,0 +1,22 @@
+<div class="base-select-body" *ngIf="isBaseSelected">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle style="margin-bottom: 0px">
+        <img [src]="img" class="base-select-hi"/>
+        <span>“欢迎应聘广州大学！请告知我们您的基本学术条件，系统将自动为您匹配合适的人才项目。”</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <div class="base-select-content">
+    <cst-datepicker [item]="viewJson.birthday"></cst-datepicker>
+    <cst-select [item]="viewJson.talent" (other)="selectOther($event)"></cst-select>
+    <cst-select [item]="viewJson.job" (other)="selectOther($event)"></cst-select>
+    <cst-select [item]="viewJson.subject"></cst-select>
+    <cst-select [item]="viewJson.topDegree" (other)="selectOther($event)"></cst-select>
+    <button mat-raised-button class="base-select-submit" (click)="submit()">提交</button>
+    <div class="base-select-bottom">
+      <p class="aware">提交后数据不可修改，请确认后提交</p>
+      <p class="copyright">Copyright © 广州大学</p>
+    </div>
+  </div>
+</div>

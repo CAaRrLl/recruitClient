@@ -1,0 +1,95 @@
+<div *ngIf="type===1">
+  <p style="color: #3F3F3F">{{data}}</p>
+</div>
+<div *ngIf="type===0">
+  <div *ngIf="data?.SelectData">
+    <mat-form-field>
+      <input matInput placeholder="出生日期" value="{{data?.SelectData.Birthday}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field>
+      <textarea matInput placeholder="人才称号" value="{{data?.SelectData.TalentTitle}}" readonly></textarea>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput placeholder="职称职务" value="{{data?.SelectData.JobTitle}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput placeholder="学科类别" value="{{data?.SelectData.Subject}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput placeholder="最高学位" value="{{data?.SelectData.TopDegree}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field *ngFor="let item of data?.SelectData.Paper,let i=index">
+      <input matInput placeholder="{{i===0?'论文成果':''}}" value="{{item}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field *ngFor="let item of data?.SelectData.Study,let i=index">
+      <input matInput placeholder="{{i===0?'科研成果':''}}" value="{{item}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput placeholder="岗位类型" value="{{data?.SelectData.SelectResult}}" readonly>
+    </mat-form-field><br>
+  </div>
+  <div *ngIf="data?.ResnData">
+    <mat-form-field>
+      <input matInput placeholder="预约时间" value="{{data?.ResnData.StartTime|date: 'yyyy-MM-dd   HH:mm'}} 至 {{data?.ResnData.EndTime|date: 'HH:mm'}}" readonly>
+    </mat-form-field><br>
+    <mat-form-field>
+      <input matInput placeholder="预约消息" value="{{data?.ResnData.Comment}}" readonly>
+    </mat-form-field><br>
+  </div>
+  <div *ngIf="data?.SelfCheckSheet">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>自查表数据</mat-panel-title>
+          <mat-panel-description>文件列表</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let f of data?.SelfCheckSheet.AnnexFiles,let i=index">
+          <span>{{f.FileName}}</span>
+          <a href="{{downFileUrl}}id={{f.FileContent}}"><mat-icon class="my-mat-icon">get_app</mat-icon></a>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!--流程11,22考核协议数据、14过会纪要数据、18签约合同数据数据类型-->
+  <div *ngIf="data?.AnnexData">
+    <mat-accordion>
+        <span>{{data?.PcsId===14?'过会纪要附件':(data?.PcsId===18?'签约合同附件':'考核协议附件')}}</span>
+        <mat-icon class="my-mat-icon" style="cursor:pointer" (click)="downloadFiles()">get_app</mat-icon>
+    </mat-accordion>
+  </div>
+  <div *ngIf="data?.MsgData">
+    <div *ngIf="data?.PcsId===19">
+      <mat-form-field>
+        <input matInput placeholder="姓名" value="{{data?.MsgData.UserName}}" readonly>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="地址" value="{{data?.MsgData.Address}}" readonly>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="电话" value="{{data?.MsgData.Phone}}" readonly>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="邮箱" value="{{data?.MsgData.Email}}" readonly>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="身份证号" value="{{data?.MsgData.Identity}}" readonly>
+      </mat-form-field><br>
+    </div>
+    <div *ngIf="data?.PcsId===29">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>计划生育证明</mat-card-title>
+          <a href="{{downFileUrl}}id={{data?.MsgData?.FileId}}"><mat-icon class="my-mat-icon" style="top:0">get_app</mat-icon></a>
+          
+        </mat-card-header>
+        <mat-card-content style="text-align: center">
+          <img class="avatarImg" src="{{downFileUrl}}id={{data?.MsgData?.FileId}}" (click)="onClickImg()">
+        </mat-card-content>
+        <!--<div class="mask" *ngIf="maskCtrl" (click)="onClickMask()">
+          <img src="{{downFileUrl}}id={{data?.MsgData?.FileId}}">
+        </div>-->
+        <mat-card-subtitle style="text-align: center;">{{data?.MsgData.FileName}}</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+</div>

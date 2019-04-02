@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+.page-select {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  .label {
+    margin: 0 4px;
+  }
+}
+::-webkit-scrollbar{
+  width:0;
+}

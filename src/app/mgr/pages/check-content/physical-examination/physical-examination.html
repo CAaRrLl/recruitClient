@@ -1,0 +1,20 @@
+<div *ngIf="pcsid === 17" class="div-margin">
+  <mat-card align="center">
+    <mat-card-title>
+      {{pcsName}}
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-select [(value)]="selected" (valueChange)="onSelectChange()">
+          <mat-option value="none" disabled>请选择</mat-option>
+          <mat-option value="accept">合格</mat-option>
+          <mat-option value="review">复检</mat-option>
+          <mat-option value="refuse">不合格</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button  (click)="makeSure()">确定</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

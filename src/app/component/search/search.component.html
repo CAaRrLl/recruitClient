@@ -1,0 +1,17 @@
+<div class="search mat-elevation-z2" fxLayout="row" [ngStyle]="{'width':(width?width:'auto'),'padding-left':'5px','padding-right':'5px'}">
+  <div *ngFor="let item of items;let i=index;" style="margin-left:5px;margin-right: 5px;">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+    </div>
+    <mat-form-field *ngIf="item.type=='select'" [ngStyle]="{'width':(item.width?item.width:'auto')}">
+      <mat-select [placeholder]="item.placeHolder" (change)="enterUp()" [(ngModel)]="item.value" >
+        <mat-option *ngFor="let option of item.options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <input fxFlex *ngIf="item.type!=='select'" type="{{item.type?item.type:'search'}}" autocomplete="off" spellcheck="false" [placeholder]="item.placeHolder"
+           (keyup.enter)="enterUp()" [(ngModel)]="item.value" [ngStyle]="{'width':(item.width?item.width:'auto')}">
+  </div>
+  <button mat-raised-button *ngIf="resetOn" style="max-width: 200px;margin:3px;" (click)="reset()"><mat-icon>clear</mat-icon>重置</button>
+</div>

@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <div class="content-title">
+    <h3 style="margin-top: 0px;color: #474747;">重置应聘岗位</h3>
+    <p style="color: #777;">请选择</p>
+    <div class="editjobs-choices">
+      <div class="editjobs-choice editjobs-item-action" *ngFor="let job of jobType" (click)="editJob(job)">{{job}}</div>
+    </div>
+    <div>
+      <div class="editjobs-result-tip"><p style="color: #777;">当前结果</p></div>
+      <div id="editjobs-result">{{editResult}}</div>
+    </div>
+    <button class="post-btn" color="primary" mat-raised-button (click)="postEdit()">提交</button>
+  </div>
+</div>

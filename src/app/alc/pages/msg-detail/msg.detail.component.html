@@ -1,0 +1,61 @@
+<div class="page__bd">
+    <div class="weui-panel weui-panel_access" style="margin: 10% 5% 5%;">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box__bd smallborder">
+                <h4 id="detailtitle" class="weui-media-box__title">{{message.Title}}</h4>
+                <p id="detailcontent">{{message.Info}}</p>
+                <div>
+                    <p *ngIf="message.MsgType == 1" id="booktime">时间从 {{message.StartTime | date: 'yyyy-MM-dd HH:mm'}} 到 {{message.EndTime | date: 'yyyy-MM-dd HH:mm'}}</p>
+                </div>
+            </div>
+            <div id="time" class="smallborder">
+                <p class="weui-media-box__desc" style="margin-right:5%;">{{message.CreateTime | date: 'yyyy/MM/dd HH:mm'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="message.MsgType == 1 && message.Status==4">
+    <div class="weui-btn-area button" style="margin:5%;">
+        <br>
+        <button class="weui-btn weui-btn_warn" (click)="confirmMsg(6)">接受预约</button>
+        <br>
+        <button class="weui-btn weui-btn_defalut" style="color:#e15f46;" (click)="showGiveUpMask()">放弃应聘</button>
+    </div>
+</div>
+<div *ngIf="message.MsgType == 3 && message.Status==6">
+    <div class="weui-btn-area button" style="margin:5%;">
+        <br>
+        <button class="weui-btn weui-btn_warn" (click)="confirmMsg(1)">确认体检完成</button>
+        <br>
+        <button class="weui-btn weui-btn_defalut" style="color:#e15f46;" (click)="showGiveUpMask()">放弃应聘</button>
+    </div>
+</div>
+<div class="page gallery js_show" *ngIf="shown" (click)="onImgHide()">
+    <div class="page__hd">
+        <h1 class="page__title">Gallery</h1>
+        <p class="page__desc">画廊，可实现上传图片的展示或幻灯片播放</p>
+    </div>
+    <div class="weui-gallery" style="display: block">
+        <span #imgpreview id="imgpreview" class="weui-gallery__img"></span>
+    </div>
+</div>
+
+
+<div class="weui-mask" *ngIf="notice==true"></div>
+<div class="weui-dialog" *ngIf="notice==true">
+    <!--    <div class="weui-dialog__hd"><strong class="weui-dialog__title">{{dialogTitle}}</strong></div>-->
+    <div class="weui-dialog__bd">{{tips}}</div>
+    <div class="weui-dialog__ft">
+        <a href="javascript:;" (click)="closeNotice()" *ngIf="!isSubmited" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+    </div>
+</div>
+
+<div class="weui-mask"  *ngIf="giveupflag==true"></div>
+<div class="weui-dialog" *ngIf="giveupflag==true">
+    <div class="weui-dialog__hd"><strong class="weui-dialog__title">放弃应聘</strong></div>
+    <div class="weui-dialog__bd">您是否确定放弃应聘？</div>
+    <div class="weui-dialog__ft">
+        <a href="javascript:;" (click)="giveUp()" class="weui-dialog__btn weui-dialog__btn_default">放弃应聘</a>
+        <a href="javascript:;" (click)="closeGiveUpMask()" class="weui-dialog__btn weui-dialog__btn_primary">取消</a>
+    </div>
+</div>

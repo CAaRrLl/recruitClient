@@ -1,0 +1,16 @@
+<h1 *ngIf="data.title" mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <p *ngIf="data.content">{{data.content}}</p>
+  <mat-form-field *ngIf="data.input">
+    <input matInput [placeholder]="data.input.placeholder" tabindex="1" [(ngModel)]="data.input.value">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <div *ngIf="!data.buttons">
+    <button mat-button [mat-dialog-close]="data.input" tabindex="2">确定</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">关闭</button>
+  </div>
+  <div *ngFor="let button of data.buttons" style="width: 100%;text-align: center;">
+    <button mat-raised-button color="primary" (click)="button.func()">{{button.name}}</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<p  *ngIf="messages.data.length<=0" class="nomsg">暂无消息</p>
+
+<div class="weui-panel weui-panel_access" style="margin:5%;">
+    <div class="weui-panel__bd" *ngFor="let message of messages.data">
+        <a (click)="nvgToDetail(message.MsgId)" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">{{message.Title}}</h4>
+                <p class="weui-media-box__desc">{{message.Info}}</p>
+            </div>
+            <div class="weui-media-box__hd" style="width:70px;margin-right:0em;">
+                <span class="weui-badge" *ngIf="message.IsRead == false">New</span>
+                <div *ngIf="message.IsRead == true">
+                    <p style="color:darkgray;" *ngIf="message.Status == 1">审核通过</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 2">需要修改</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 3">应聘终止</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 4">未预约</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 5">已预约</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 6">未确认</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 7">已确认</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 8">未提交</p>
+                    <p style="color:darkgray;" *ngIf="message.Status == 9">已提交</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+

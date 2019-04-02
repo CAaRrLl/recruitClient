@@ -1,0 +1,25 @@
+i.icon{display:inline-block;opacity:.75;margin:0 .25em 0 0;width:1.23em;height:1em;font-family:Icons;font-style:normal;line-height:1;font-weight:400;text-decoration:inherit;text-align:center;speak:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
+/*i.icon.smile:before{content:"\f118";}*/
+i.icon.close:before{content:"\f00d";}
+i.icon{font-size:1em;}
+.flash{-webkit-animation-name:flash;animation-name:flash;}
+.cg.flash{width:300px;font-size:14px;margin-left:-150px;position:fixed;top:-500px;left:50%;z-index:9999;background-color:#F4F4F4;color:#666;border-bottom-left-radius:5px;border-bottom-right-radius:5px;-webkit-box-shadow:2px 2px 7px #CCC;-moz-box-shadow:2px 2px 7px #CCC;-ms-box-shadow:2px 2px 7px #CCC;-o-box-shadow:2px 2px 7px #CCC;box-shadow:2px 2px 7px #CCC;-webkit-transition:all ease-in-out .6s;-moz-transition:all ease-in-out .6s;-ms-transition:all ease-in-out .6s;-o-transition:all ease-in-out .6s;transition:all ease-in-out .6s;opacity:0;}
+.cg.flash>.outer{max-height:300px;overflow-x:hidden;overflow-y:auto;-webkit-transition:margin ease-in-out .2s;-moz-transition:margin ease-in-out .2s;-ms-transition:margin ease-in-out .2s;-o-transition:margin ease-in-out .2s;transition:margin ease-in-out .2s;}
+.cg.flash:hover>.outer{margin-top:15px;}
+.cg.flash>.outer>.message{height:0;opacity:0;-webkit-transition:all linear .6s;-moz-transition:all linear .6s;-ms-transition:all linear .6s;-o-transition:all linear .6s;transition:all linear .6s;position:relative;}
+.cg.flash>.outer>.active.message{opacity:1;height:auto;padding:10px;word-break:break-all;}
+.cg.flash>.close.icon:first-child{z-index:inherit;position:absolute;right:-5px;top:-14px;opacity:0;color:#A95252;display:inline;cursor:pointer;-webkit-transition:all ease-in-out .2s;-moz-transition:all ease-in-out .2s;-ms-transition:all ease-in-out .2s;-o-transition:all ease-in-out .2s;transition:all ease-in-out .2s;}
+.cg.flash:hover>.close.icon:first-child{opacity:1;top:0;}
+.cg.center.flash{text-align:center;}
+.cg.active.flash{top:0;opacity:1;}
+@-webkit-keyframes flash{0%,100%,50%{opacity:1;}25%,75%{opacity:0;}}
+@-moz-keyframes flash{0%,100%,50%{opacity:1;}25%,75%{opacity:0;}}
+@keyframes flash{0%,100%,50%{opacity:1;}25%,75%{opacity:0;}}
+@-webkit-keyframes flash{0%,100%,50%{opacity:1;}25%,75%{opacity:0;}}
+@keyframes flash{0%,100%,50%{opacity:1;}25%,75%{opacity:0;}}
+@font-face{font-family:Icons;font-style:normal;font-weight:400;font-variant:normal;text-decoration:inherit;text-transform:none;}
+
+.cg.flash>.outer>.success.message{background-color: rgba(53, 203, 252, 0.58);color: #061241;}
+.cg.flash>.outer>.warn.message{background-color: #fcf94d;color: #0e13cb;}
+.cg.flash>.outer>.error.message{background-color: #fc8e3b;color: #e52b1c;}
+.cg.flash>.outer>.info.message{background-color:#DEFCD5;color:#52A954;}

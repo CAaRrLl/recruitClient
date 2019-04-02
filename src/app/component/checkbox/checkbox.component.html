@@ -1,0 +1,11 @@
+<section *ngIf="item">
+  <h4 style="font-weight: 100">{{item.name}}</h4>
+  <mat-checkbox class="my-checkbox"
+                *ngFor="let option of item.optionMoreValue"
+                [value]="option"
+                [checked]="setCheckBoxValue(option)"
+                (change)="onChange($event)"
+                [disabled] = "readonly">
+    {{option}}
+  </mat-checkbox>
+</section>

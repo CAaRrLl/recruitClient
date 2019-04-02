@@ -1,0 +1,28 @@
+<div [ngClass]="[theme.header]" fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="row" style="width:100%;">
+    <div _ngcontent-c1="" class="topbar">
+      <div _ngcontent-c1="" class="topbar-left">
+        <img alt="广州大学" border="0" height="75" src="{{logo}}" title="广州大学" width="250">
+      </div>
+      <div _ngcontent-c1="" class="topbar-right">
+        <img src="{{xiaoxun}}" style="text-align: start; vertical-align: middle;">
+      </div>
+    </div>
+    <!--功能区域-->
+    <div style="position: absolute;left: 20px;width:100%;z-index: 100;margin-top: 64px;color:white;" fxLayout="row">
+      <div fxLayoutAlign="start center" style="width: 95%;">
+        <button style="width: 100px;" mat-icon-button (click)="sidenav.opened = !sidenav.opened">
+          <mat-icon>menu</mat-icon>菜单
+        </button>
+      </div>
+      <div fxLayoutAlign="end center">
+        <span fxFlex></span>
+        <app-toolbar-notification></app-toolbar-notification>
+          <!--<button mat-button class="more-btn" (click)="showMore()">-->
+          <!--<mat-icon>more_vert</mat-icon>-->
+          <!--</button>-->
+      </div>
+    <!--功能区域-->
+  </div>
+</div>
+</div>

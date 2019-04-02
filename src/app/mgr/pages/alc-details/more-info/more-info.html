@@ -1,0 +1,80 @@
+<h2 *ngIf="!displayDetail">加载中...</h2>
+<div *ngIf="displayDetail">
+  <mat-card>
+    <mat-card-title>{{displayDetail.Name}}</mat-card-title>
+    <mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              详细信息
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div style="overflow-y: scroll;max-height: 65vh;">
+            <cst-input [item]="displayDetail.ID" [readonly]="displayDetail.ID.readonly"></cst-input>
+            <cst-input [item]="displayDetail.Contact"  [readonly]="displayDetail.Contact.readonly"></cst-input>
+            <cst-input [item]="displayDetail.EMail"  [readonly]="displayDetail.EMail.readonly"></cst-input>
+            <cst-input [item]="displayDetail.GreenCard" [readonly]="displayDetail.GreenCard.readonly"></cst-input>
+            <cst-input [item]="displayDetail.GraduateOrWorker" [readonly]="displayDetail.GraduateOrWorker.readonly"></cst-input>
+            <cst-input [item]="displayDetail.DoctorTime" [readonly]="displayDetail.DoctorTime.readonly"></cst-input>
+            <cst-input [item]="displayDetail.Postdoctoral" [readonly]="displayDetail.Postdoctoral.readonly"></cst-input>
+            <!--百人计划，新近讲师类型-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.AlcMetorKind" [readonly]="displayDetail.AlcMetorKind.readonly"></cst-input>
+            <!--百人计划 人才类型-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.TechLevel" [readonly]="displayDetail.TechLevel.readonly"></cst-input>
+            <!--科研成果-->
+            <cst-textarea [item]="displayDetail.Thesis"  [readonly]="displayDetail.Thesis.readonly"></cst-textarea>
+            <cst-textarea [item]="displayDetail.Science"  [readonly]="displayDetail.Science.readonly"></cst-textarea>
+            <cst-textarea [item]="displayDetail.SciencePrize"  [readonly]="displayDetail.SciencePrize.readonly"></cst-textarea>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded = "true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              学院推荐意见
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div style="overflow-y: scroll;max-height: 65vh;" dcm="true">
+            <form>
+            <!--百人计划 岗位类别-->
+              <mat-form-field *ngIf="proName==='百人计划'" style="width: 100%" >
+                <mat-select placeholder="岗位类别" [(ngModel)]="alc.PositionKind" name="PositionKind">
+                  <mat-option *ngFor="let PositionKind of PositionKinds" [value]="PositionKind">
+                    {{PositionKind}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!--<cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.PositionKind" [readonly]="displayDetail.PositionKind.readonly"></cst-input>-->
+            <!--百人计划 薪酬/万-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.Salary" [readonly]="displayDetail.Salary.readonly"></cst-input>
+            <!--百人计划 科研启动费-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.ScienceMoney" [readonly]="displayDetail.ScienceMoney.readonly"></cst-input>
+            <!--百人计划 购房补贴-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.HouseMoney" [readonly]="displayDetail.HouseMoney.readonly"></cst-input>
+            <!--百人计划 聘用岗位-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.HirePosition" [readonly]="displayDetail.HirePosition.readonly"></cst-input>
+            <!--百人计划 聘期-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.HireTime" [readonly]="displayDetail.HireTime.readonly"></cst-input>
+            <!--百人计划 导师类别-->
+            <cst-input *ngIf="proName==='百人计划'" [item]="displayDetail.MetorKind" [readonly]="displayDetail.MetorKind.readonly"></cst-input>
+            <!--新近讲师 特别津贴等级-->
+            <cst-input *ngIf="proName!=='百人计划'" [item]="displayDetail.Allowance" [readonly]="displayDetail.Allowance.readonly"></cst-input>
+            <cst-textarea [item]="displayDetail.Tips"  [readonly]="displayDetail.Tips.readonly"></cst-textarea>
+            </form>
+            <mat-card-actions>
+              <div fxFlex="center" style="width:60%">
+                <!--dcm 用来标志右边弹框不要关闭-->
+                <button mat-raised-button fxFlex="center" color="primary" (click)="cancel()">放弃修改</button>
+                <button mat-raised-button fxFlex="center" color="primary" (click)="confirm()">确定修改</button>
+              </div>
+            </mat-card-actions>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</div>

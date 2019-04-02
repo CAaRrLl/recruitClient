@@ -1,0 +1,67 @@
+<h1 style="text-align: center">应聘者应聘情况总览</h1>
+<div fxLayout="row" fxLayoutWrap>
+  <!-- -->
+  <div fxFlex.gt-sm="50" #bar>
+    <mat-card>
+      <mat-card-title>广州大学人才招聘数据直方图</mat-card-title>
+      <mat-card-actions>
+        <button style="position: absolute;right:30px;top: 20px;" mat-button [matMenuTriggerFor]="ty"><mat-icon>menu</mat-icon>{{types[type]}}</button>
+        <mat-menu #ty="matMenu">
+          <button mat-menu-item (click)="setType(0)">总览</button>
+          <button mat-menu-item (click)="setType(1)">工科</button>
+          <button mat-menu-item (click)="setType(2)">理科</button>
+          <button mat-menu-item (click)="setType(4)">艺术</button>
+          <button mat-menu-item (click)="setType(3)">人文社科</button>
+        </mat-menu>
+      </mat-card-actions>
+      <mat-card-content>
+        <div class="card-loading-content">
+          <p class="card-loading-block" style="width: 94%"></p>
+          <p>
+            <span class="card-loading-block" style="width: 28%"></span>
+            <span class="card-loading-block" style="width: 62%"></span>
+          </p>
+          <p>
+            <span class="card-loading-block" style="width: 22%"></span>
+            <span class="card-loading-block" style="width: 66%"></span>
+          </p>
+          <p>
+            <span class="card-loading-block" style="width: 56%"></span>
+            <span class="card-loading-block" style="width: 39%"></span>
+          </p>
+          <p>
+            <span class="card-loading-block" style="width: 21%"></span>
+            <span class="card-loading-block" style="width: 15%"></span>
+            <span class="card-loading-block" style="width: 40%"></span>
+          </p>
+        </div>
+        <canvas *ngIf="barChartData && barChartData.length>0"
+          baseChart height="150px"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.gt-sm="50">
+    <mat-card>
+      <mat-card-title>应聘状况</mat-card-title>
+      <mat-card-actions>
+        <button mat-button style="position: absolute;right:30px;top: 20px;" [matMenuTriggerFor]="year"><mat-icon>menu</mat-icon>{{years[yearIndex]}}</button>
+        <mat-menu #year="matMenu">
+          <button mat-menu-item *ngFor="let y of years;let i=index" (click)="setYear(i)">{{years[i]}}</button>
+        </mat-menu>
+      </mat-card-actions>
+      <mat-card-content>
+        <canvas *ngIf="doughnutChartData && doughnutChartData.length>0"
+          baseChart height="150px"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

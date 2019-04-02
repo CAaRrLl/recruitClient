@@ -1,0 +1,27 @@
+<div style="overflow-y: scroll">
+  <mat-vertical-stepper style="height: 90vh" *ngIf="curProcessId" [selectedIndex]="curProcessId-1" #step>
+    <mat-step *ngFor="let item of pcsdataModel,let i=index">
+      <div style="position: relative" *ngIf="i+1<curProcessId">
+        <ng-template matStepLabel>
+          <div class="my-mat-step-click" (click)="getPcsForm(i)">
+            <div class="my-mat-step-icon"><span>{{i+1}}</span></div>
+          </div>
+          <mat-toolbar class="processName"><span>{{processModel[i]?.PcsName}}</span></mat-toolbar>
+          <mat-toolbar class="processTip"><span>流程通过</span></mat-toolbar>
+        </ng-template>
+        <pro-data [data]="pcsdataModel[i]"></pro-data>
+      </div>
+      <div style="position: relative" *ngIf="i+1>=curProcessId">
+        <ng-template matStepLabel>
+          <div class="my-mat-step-click">
+            <div class="my-mat-step-icon {{curProcessId===i+1?'my-mat-step-icon-cur':'my-mat-step-icon-grey'}}"><span>{{i+1}}</span></div>
+          </div>
+          <mat-toolbar class="processName"><span>{{processModel[i]?.PcsName}}</span></mat-toolbar>
+          <mat-toolbar class="processTip"><span>{{curProcessId===i+1?'当前流程':'流程未开始'}}</span></mat-toolbar>
+        </ng-template>
+        <p *ngIf="curProcessId===i+1">{{i+1===processModel.length?'已完成':(curPcsid<0?'应聘者已被拒绝':'正在进行')}}</p>
+        <p *ngIf="curProcessId!==i+1" class="data-p">——————— 数据不存在 ———————</p>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

@@ -1,0 +1,19 @@
+<div class="sidenav-container" fxLayout="column">
+  <!--页头-->
+  <div>
+    <img src="{{logo}}" style="width: 100%;background: green;">
+  </div>
+  <!--页头end-->
+  <!--内容区-->
+  <div class="sidenav-scrollbar-container" [ngClass]="[theme.aside]" fxLayout="column">
+    <mat-nav-list fxLayout="column" class="sidenav-list sidenav-toplevel">
+      <sidenav-item *ngFor="let item of items" [item]="item"></sidenav-item>
+    </mat-nav-list>
+  </div>
+  <!--内容区end-->
+  <!--页脚-->
+  <div class="sidenav-footer" [ngClass]="[theme.aside]" fxLayout="row" fxFlexAligin="center center">
+    <p style="text-align: center;width: 100%;">广州大学网络中心</p>
+  </div>
+  <!--页脚end-->
+</div>

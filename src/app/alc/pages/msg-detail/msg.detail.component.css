@@ -1,0 +1,44 @@
+#time{
+    width: 100%;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    text-align: right;
+  }
+
+  #detailtitle{
+    font-size: large;
+    padding-left: 1.1em;
+    padding-top: 1em;
+  }
+
+  #detailcontent{
+    font-size: small;
+    color:darkgray;
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    overflow: scroll;
+    max-height: 20vh;
+  }
+  #booktime{
+    font-size: small;
+    color:darkgray;
+    padding-top: 0.2em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+
+  .smallborder{
+    border: 1px solid  #f0f0f0;
+  }
+  ::-webkit-scrollbar{
+    width:0;
+  }
+  .button{
+    position: absolute;
+    bottom: 5%;
+    float: initial;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }

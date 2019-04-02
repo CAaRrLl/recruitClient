@@ -1,0 +1,33 @@
+export const BaseSelectJson={
+  birthday:{
+    name:'出生日期',
+    required:true,
+    content:[]
+  },
+  talent:{
+    name:'人才称号',
+    optionValue:['无','院士','长江学者特聘教授','国家千人计划入选者','国家青年杰出人才基金获得者', '国家自然科学基金优秀青年基金项目获得者',
+      '国家“千人计划”青年人才','“国家特支计划”青年拔尖人才','“长江学者奖励计划”青年学者','其他'],
+    required:true,
+    content:[]
+  },
+  job:{
+    name:'职务职称',
+    optionValue:['海外知名大学或科研机构正高','海外知名大学或科研机构副高','国内知名高校或科研机构正高','国内知名高校或科研机构副高',
+      '其他高校或科研机构正高','其他'],
+    required:true,
+    content:[]
+  },
+  subject:{
+    name:'学科类别',
+    optionValue:['人文社科类','理工类','艺术、体育类'],
+    required:true,
+    content:[]
+  },
+  topDegree:{
+    name:'最高学位',
+    optionValue:['境外博士','境外应届博士','境内博士','境内应届博士','硕士','其他'],
+    required:true,
+    content:[]
+  }
+};

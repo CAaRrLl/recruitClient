@@ -1,0 +1,19 @@
+<cst-resume *ngIf="isShowForm"
+  [formJson]="formJson"
+  [readonlyInfo]="readonlyInfo"
+  (inputBlur)="onBlur($event)"
+  (summit)="onSummit()"
+  (save)="onSave()"
+  (pass)="onClickPass()"
+  (deny)="onClickDeny()"
+  [showActions]="!(from==='alc-all')"
+  (modify)="onClickModify()"
+  (downloadResume)="downloadResume()">
+</cst-resume>
+
+<div *ngIf="!isShowForm"
+  style="padding: 10px 30px; height:100%; background: #eaeaea; ">
+  <h2 style="font-weight: 200">
+    简历加载中...
+  </h2>
+</div>

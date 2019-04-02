@@ -1,0 +1,19 @@
+.input-style{
+  display: block;
+}
+.div-style{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+.card-style{
+  width: 40%;
+  height:50%;
+  margin: auto;
+  background-color: #e2f8ec;
+}
+.action-style{
+  padding-right: 5%;
+  padding-bottom: 2%
+}

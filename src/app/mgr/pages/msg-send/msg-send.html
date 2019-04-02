@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-title>发送消息</mat-card-title>
+  <mat-card-subtitle *ngIf="sendAll === false">当前流程：<span class="span-style">{{pcsName}}</span></mat-card-subtitle>
+  <mat-card-subtitle>接收方：<span *ngFor="let alcdata of alcData" style="margin-right: 10px;font-style: italic">{{alcdata.name}}</span></mat-card-subtitle>
+  <mat-card-content>
+    <div  *ngIf="(pcsid === 5 || pcsid === 9 || pcsid === 20 || pcsid === 25) && normal === false">
+      <label>预约时间段</label>
+      <mat-card-content>
+        <form class="date-form">
+          <mat-form-field>
+            <input matInput
+                   name="selectDate"
+                   [matDatepicker]="picker"
+                   placeholder="请选择日期"
+                   [(ngModel)]="selectDate"
+            >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div style="height:25px">
+          <label class="date-line-tip">选择时间点</label>
+            <span class="date-line-tip" style="margin-left: 5%">开始：</span>
+            <input  matInput
+                    class="time-input-style date-line-input"
+                    type="time"
+                    name="startTime"
+                    [(ngModel)]="startTime" required
+            >
+            <span class="date-line-tip">结束：</span>
+            <input  matInput
+                    class="time-input-style date-line-input"
+                    type="time"
+                    name="endTime"
+                    [(ngModel)]="endTime" required
+            >
+          </div>
+        </form>
+      </mat-card-content>
+    </div>
+    <div *ngIf="commonMsg">
+      <mat-card-subtitle>常用语</mat-card-subtitle>
+      <mat-card-content style="position:relative; height:100px;  overflow:auto">
+        <div class="used-text used-text-action used-text-over" *ngFor="let it of sentences" (click)="setContent(it);">{{it}}</div>
+        <mat-card-subtitle *ngIf="!sentences || sentences.length===0">（暂无常用语）</mat-card-subtitle>
+      </mat-card-content>
+    </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput
+                    [placeholder]="changeback===true?'请输入打回理由':'填写或选择消息内容~'"
+                    matTextareaAutosize matAutosizeMinRows="4"
+                    matAutosizeMaxRows="4" class="msg-font-size"
+                    [(ngModel)]="msgSend"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div align="right" class="btn-margin">
+        <button mat-button (click)="onSubmit()">发送通知</button>
+      </div>
+  </mat-card-content>
+  <!--<mat-card-actions>-->
+    <!--<div align="right" class="btn-margin">-->
+      <!--<button mat-button (click)="onSubmit()">发送通知</button>-->
+    <!--</div>-->
+  <!--</mat-card-actions>-->
+</mat-card>

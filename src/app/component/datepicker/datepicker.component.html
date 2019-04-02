@@ -1,0 +1,30 @@
+<mat-form-field *ngIf="item">
+  <input matInput
+    [matDatepicker]="picker"
+    [formControl]="formControl"
+    [placeholder]="item.name"
+    [ngModel]="item.content[0]"
+    (blur)="onBlur()"
+    (click)="picker.open()">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker [startAt]="startDate" 
+    (selectedChanged)="selectedChange($event)">
+  </mat-datepicker>
+  <mat-error *ngIf="formControl.hasError('required')">
+    {{hint}}必填
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field *ngIf="!item">
+  <input matInput
+        [matDatepicker]="picker"
+        [formControl]="formControl"
+        [placeholder]="name"
+        [ngModel]="content"
+        (blur)="onBlur()">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker [startAt]="startDate" (selectedChanged)="selectedChange($event)"></mat-datepicker>
+  <mat-error *ngIf="formControl.hasError('required')">
+    {{hint}}必填
+  </mat-error>
+</mat-form-field>

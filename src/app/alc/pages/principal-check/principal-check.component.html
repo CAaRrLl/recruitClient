@@ -1,0 +1,84 @@
+<mat-tab-group (selectedIndexChange)="tabChange($event)" class="content">
+  <!-- 百人计划 -->
+  <mat-tab [label]="tab1Title">
+    <div style="margin: 10px 10px;height: 88vh">
+      <div *ngFor="let hrdItem of hrdData;let i=index"
+            style="padding-top: 10px; padding-bottom: 10px">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>百人计划 - {{hrdItem.HundredInfo.Name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            
+            <p *ngIf="hrdStatus && hrdData.length === 0">{{hrdStatus}}</p>
+            <cst-input [name]="'序号'" [(content)]="hrdItem.HundredInfo.TIndex" [readonly]="true"></cst-input>
+            <cst-input [name]="'聘用单位'" [(content)]="hrdItem.HundredInfo.Department" [readonly]="true"></cst-input>
+            <cst-input [name]="'姓名'" [(content)]="hrdItem.HundredInfo.Name" [readonly]="true"></cst-input>
+            <cst-input [name]="'性别'" [(content)]="hrdItem.HundredInfo.Sex" [readonly]="true"></cst-input>
+            <cst-input [name]="'人才类别'" [(content)]="hrdItem.HundredInfo.TalentKind" [readonly]="true"></cst-input>
+            
+            <cst-select [name]="'岗位类别'" 
+              [(content)]="hrdItem.HundredInfo.PositionKind" 
+              [optionValue]="['领军人才','学科带头人','学术带头人','青年杰出人才（A类）','青年杰出人才（B类）']">
+            </cst-select>
+            <cst-input [name]="'年薪(万元)'" [(content)]="hrdItem.HundredInfo.Salary"></cst-input>
+            <cst-input [name]="'科研启动费(万元)'" [(content)]="hrdItem.HundredInfo.ScienceMoney"></cst-input>
+            <cst-input [name]="'贴房补贴(税后,万元)'" [(content)]="hrdItem.HundredInfo.HouseMoney"></cst-input>
+            <cst-input [name]="'聘用岗位'" [(content)]="hrdItem.HundredInfo.HirePosition"></cst-input>
+            <cst-input [name]="'聘期'" [(content)]="hrdItem.HundredInfo.HireTime"></cst-input>
+            <cst-input [name]="'导师类别'" [(content)]="hrdItem.HundredInfo.MetorKind"></cst-input>
+            <cst-input [name]="'备注'" [(content)]="hrdItem.HundredInfo.Tips"></cst-input>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-radio-group (change)="radioChange($event,hrdItem)">
+              <mat-radio-button value="true" [checked]="hrdItem.IsPass">通过</mat-radio-button>
+              <mat-radio-button value="false" [checked]="!hrdItem.IsPass">拒绝</mat-radio-button>
+            </mat-radio-group>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    
+  </mat-tab>
+
+  <!-- 新进讲师 -->
+  <mat-tab [label]="tab2Title">
+    <div style="margin: 10px 10px;height: 88vh">
+      <div *ngFor="let lecItem of lecData;let i=index"
+            style="padding-top: 10px; padding-bottom: 10px">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>新进讲师</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p *ngIf="lecStatus && lecData.length === 0">{{lecStatus}}</p>
+            <cst-input [name]="'序号'" [(content)]="lecItem.NewLectureInfo.TIndex" [readonly]="true"></cst-input>
+            <cst-input [name]="'部门'" [(content)]="lecItem.NewLectureInfo.Department" [readonly]="true"></cst-input>
+            <cst-input [name]="'姓名'" [(content)]="lecItem.NewLectureInfo.Name" [readonly]="true"></cst-input>
+            <cst-input [name]="'性别'" [(content)]="lecItem.NewLectureInfo.Sex" [readonly]="true"></cst-input>
+            <cst-input [name]="'特别津贴等级'" [(content)]="lecItem.NewLectureInfo.Allowance"></cst-input>
+            <cst-input [name]="'备注'" [(content)]="lecItem.NewLectureInfo.Tips"></cst-input>
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-radio-group (change)="radioChange($event,lecItem)">
+              <mat-radio-button value="true" [checked]="lecItem.IsPass">通过</mat-radio-button>
+              <mat-radio-button value="false" [checked]="!lecItem.IsPass">拒绝</mat-radio-button>
+            </mat-radio-group>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="footer">
+  <div style="height: 35px;padding: 8px 8px 0 8px" *ngIf="getBtnDisplay()">
+    <button mat-raised-button style="width: 100%; height: 100%" (click)="saveData()">保存</button>
+  </div>
+  <div style="height: 35px;padding: 8px 8px 8px 8px" *ngIf="getBtnDisplay()">
+    <button mat-raised-button color="primary" style="width: 100%; height: 100%" (click)="summitData()">提交</button>
+  </div>
+</div>
+
+

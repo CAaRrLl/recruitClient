@@ -1,0 +1,46 @@
+<div class="div-style">
+<mat-card class="card-style">
+  <mat-card-header >
+    <mat-card-title>广州大学人才招聘系统模拟登陆</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+      <mat-form-field>
+        <mat-select placeholder="wxtype" 
+                    [(ngModel)]="wxtype">
+          <mat-option>请选择</mat-option>
+          <mat-option #select 
+                      *ngFor="let option of wxtypes;let i=index" 
+                      [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-style" >
+        <input
+          matInput
+          placeholder="输入OpenID"
+          [(ngModel)]="openID"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="input-style">
+        <input matInput
+               placeholder="输入Level"
+               [(ngModel)]="level"
+        >
+      </mat-form-field>
+      
+  </mat-card-content>
+  <mat-label *ngIf="showcookie === true">
+    获取cookie成功（但不一定能登陆成功，请确保管理员level与openid正确！
+  </mat-label>
+  <mat-label *ngIf="showcookie === true">
+    Cookie:<span style="color: #9C0006">{{cookie}}</span>
+  </mat-label>
+  <mat-card-actions align="right" class="action-style">
+    <button mat-button (click)="login()">登陆</button>
+  </mat-card-actions>
+</mat-card>
+</div>

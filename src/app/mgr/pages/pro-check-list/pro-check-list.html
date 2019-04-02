@@ -1,0 +1,26 @@
+<mat-card>
+  <!--项目名称-->
+  <mat-card-title>
+    <button mat-button [matMenuTriggerFor]="prj"><mat-icon>menu</mat-icon>{{projectName}}</button>
+    <mat-menu #prj="matMenu">
+      <button mat-menu-item (click)="changeProject('百人计划')">百人计划</button>
+      <button mat-menu-item (click)="changeProject('新进讲师')">新进讲师</button>
+      <button mat-menu-item (click)="changeProject('学者交流会')">学者交流会</button>
+      <button mat-menu-item (click)="changeProject('其他')">其他</button>
+    </mat-menu>
+  </mat-card-title>
+  <mat-card-actions fxLayoutAlign="end">
+    <app-search [onSearch]="searchEvent" [onSearchChange]="searchEvent" [items]="items"></app-search>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>input</mat-icon>{{selectItems.length>0?'批量操作（'+selectItems.length+'）':'批量操作'}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="goSelfCheck(7)">线下面试通过</button>
+      <button mat-menu-item (click)="goSelfCheck(14)">过会审核</button>
+      <button mat-menu-item (click)="downMultTable()">导出汇总表</button>
+      <button mat-menu-item (click)="sendAllMsg()">通知</button>
+    </mat-menu>
+  </mat-card-actions>
+  <mat-card-content>
+    <app-table [columns]="columns" [pcontrol]="pcontrol" [setKeys]="['alcoid']" [selectChange]="selectChange" [pageChange]="pageChange" [setData]="setData" [setSelect]="setSelectItems"></app-table>
+  </mat-card-content>
+  <h1 style="text-align: center;color: grey;" *ngIf="pcontrol.length<=0">列表为空!</h1>
+</mat-card>

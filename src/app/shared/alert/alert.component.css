@@ -1,0 +1,32 @@
+*{box-sizing:border-box;}
+button{margin:0;padding:0;}
+button{font:14px/1.5 Helvetica,"lantinghei sc","Microsoft Yahei",tahoma,arial,"\5b8b\4f53",sans-serif;}
+button{font-size:14px;}
+.mgb-l{margin-bottom:20px;}
+.pd-v-s{padding:5px 0;}
+.text-center{text-align:center;}
+.btn{display:inline-block;padding:0 20px;height:36px;line-height:36px;min-width:128px;box-sizing:border-box;background:#156e89;color:#FFF;font-size:14px;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;border:1px solid transparent;border-radius:4px;outline:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+.btn:hover{text-decoration:none;}
+.btn:active{background-image:none;outline:0;box-shadow:inset 0 3px 5px rgba(0,0,0,.125);}
+.btn-gray{background-color:#777;}
+.btn-blue{background-color:#15BBF8;}
+.page-dialog-wrap{height:100%;overflow:hidden;padding:50px 0 0 0;position:relative;box-sizing:border-box;}
+.page-dialog-content{height:100%;overflow:auto;overflow-x:auto;padding:0 20px 20px 20px;box-sizing:border-box;}
+.ngdialog{box-sizing:border-box;}
+.ngdialog{position:fixed;overflow:auto;-webkit-overflow-scrolling:touch;z-index:10000;top:0;right:0;bottom:0;left:0;}
+.ngdialog-overlay{position:fixed;background:rgba(0,0,0,.4);top:0;right:0;bottom:0;left:0;-webkit-backface-visibility:hidden;-webkit-animation:ngdialog-fadein .2s;animation:ngdialog-fadein .2s;}
+.ngdialog-content{background:#fff;-webkit-backface-visibility:hidden;-webkit-animation:ngdialog-fadein .2s;animation:ngdialog-fadein .2s;pointer-events:all;}
+.ngdialog-close:before{font-family:Helvetica,Arial,sans-serif;content:'\00D7';cursor:pointer;}
+.ngdialog.ngdialog-theme-default .ngdialog-content{-webkit-animation:dialogFadeIn .2s;animation:dialogFadeIn .2s;border-radius:5px;color:#444;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.ngdialog.ngdialog-theme-default .ngdialog-close{border-radius:5px;cursor:pointer;position:absolute;right:0;top:0;}
+.ngdialog.ngdialog-theme-default .ngdialog-close:before{background:0 0;border-radius:3px;color:#BBB;content:'\00D7';font-size:26px;font-weight:400;height:30px;line-height:26px;position:absolute;right:3px;text-align:center;top:3px;width:30px;}
+.ngdialog.ngdialog-theme-default .ngdialog-close:active:before,.ngdialog.ngdialog-theme-default .ngdialog-close:hover:before{color:#777;}
+@-webkit-keyframes ngdialog-fadein{0%{opacity:0;}100%{opacity:1;}}
+@keyframes ngdialog-fadein{0%{opacity:0;}100%{opacity:1;}}
+@-webkit-keyframes dialogFadeIn{0%{opacity:0;top:45%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}100%{opacity:1;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}}
+@keyframes dialogFadeIn{0%{opacity:0;top:45%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}100%{opacity:1;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}}
+
+.md-title{font-size:20px;font-weight:500;letter-spacing:.005em;}
+md-dialog md-dialog-content:not([layout=row])>:first-child:not(.md-subheader){margin-top:0;}
+h2{margin-bottom:1rem;margin-top:1rem;}
+h2{font-size:2.400rem;font-weight:400;line-height:3.2rem;}

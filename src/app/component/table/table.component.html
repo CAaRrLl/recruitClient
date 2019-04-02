@@ -1,0 +1,47 @@
+<div class="container mat-elevation-z8">
+  <!--表格-->
+  <mat-table #table [dataSource]="data">
+    <ng-container *ngFor="let c of columns;let i = index;" matColumnDef="{{c.key}}" >
+      <!--头部-->
+      <mat-header-cell *matHeaderCellDef [ngStyle]="{'max-width':c.width?c.width:'auto','max-height':c.height?c.height:'auto','margin-right':'5px'}">
+        <!--全选框-->
+        <input #all *ngIf="selectChange && 0==i" style="width: 18px;height: 18px;" type="checkbox" (change)="selectAll($event.target.checked)">
+        {{c.name}}
+      </mat-header-cell>
+      <!--头部 end-->
+      <!--内容-->
+      <mat-cell *matCellDef="let element;let ii = index" [ngStyle]="{'max-width':c.width?c.width:'auto','max-height':c.height?c.height:'auto','margin-right':'5px','white-space':!c.multiline?'nowrap':'unset','text-overflow':!c.multiline?'ellipsis':'unset','overflow':c.key==='action'?'inherit':''}">
+        <!--多选框-->
+        <input #choose *ngIf="selectChange && 0==i" style="width: 18px;height: 18px;" type="checkbox" (change)="selectOne($event.target.checked,ii,element)">
+        <!--正常文本-->
+        <span *ngIf="c.key!=='action'" matTooltip="{{c.tip?(c.key==='index'? getIndex(ii):element[c.key]):''}}">{{c.key==='index'? getIndex(ii):element[c.key]}}</span>
+        <!--操作列表-->
+        <div *ngIf="c.key==='action'">
+          <span *ngFor="let a of element['actions']">
+           <button mat-raised-button *ngIf="a.type=='button'" (click)="a.action(element,$event)"><mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>{{a.name}}</button>
+           <mat-checkbox *ngIf="a.type=='checkbox'" (change)="a.action(element,$event)">{{a.name}}</mat-checkbox>
+          <mat-slide-toggle *ngIf="a.type=='switch'" [checked]="true" (change)="a.action(element,$event)">{{a?.name}}</mat-slide-toggle>
+        </span>
+          <span *ngFor="let a of c.actions">
+           <button mat-raised-button *ngIf="a.type=='button'" (click)="a.action(element,$event)"><mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>{{a.name}}</button>
+           <mat-checkbox *ngIf="a.type=='checkbox'" (change)="a.action(element,$event)">{{a.name}}</mat-checkbox>
+          <mat-slide-toggle *ngIf="a.type=='switch'" [checked]="true" (change)="a.action(element,$event)">{{a?.name}}</mat-slide-toggle>
+        </span>
+        </div>
+      </mat-cell>
+      <!--内容 end-->
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="getColumnsKey()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: getColumnsKey();"></mat-row>
+  </mat-table>
+  <!--表格 end-->
+  <!--分页-->
+  <mat-paginator *ngIf="pageChange"
+    [length]="pcontrol.length"
+    [pageSize]="pcontrol.pageSize"
+    [pageSizeOptions]="pcontrol.pageSizeOptions"
+    (page)="onPageChange()">
+  </mat-paginator>
+  <!--分页end-->
+</div>
+

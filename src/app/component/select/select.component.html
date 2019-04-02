@@ -1,0 +1,31 @@
+<mat-form-field *ngIf="item">
+  <mat-select [placeholder]="item.name" 
+              [formControl]="formControl" 
+              [(ngModel)]="item.content[0]"
+              (change)="onChange($event)"
+              (blur)="onBlur()">
+    <mat-option>请选择</mat-option>
+    <mat-option #select 
+                *ngFor="let option of item.optionValue;let i=index" 
+                [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="formControl.hasError('required')">必选</mat-error>
+</mat-form-field>
+
+<mat-form-field *ngIf="!item">
+  <mat-select [placeholder]="name" 
+              [formControl]="formControl" 
+              [(ngModel)]="content"
+              (change)="onChange($event)"
+              (blur)="onBlur()">
+    <mat-option>请选择</mat-option>
+    <mat-option #select 
+                *ngFor="let option of optionValue;let i=index" 
+                [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="formControl.hasError('required')">必选</mat-error>
+</mat-form-field>

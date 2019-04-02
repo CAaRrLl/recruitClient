@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title>全部老师列表</mat-card-title>
+  <div fxLayout="row">
+    <app-search [onSearch]="searchEvent" [onSearchChange]="searchEvent" [items]="items" fxLayoutAlign="end"></app-search>
+    <button mat-raised-button (click)="refreshAddressBook()"><mat-icon>refresh</mat-icon>刷新通信录</button>
+  </div>
+  <p>例如：张三 计算机学院 学院管理员</p>
+  <mat-card-content>
+    <app-table [columns]="columns" [pcontrol]="pcontrol" [selectChange]="selectChange" [pageChange]="pageChange" [setData]="setData"></app-table>
+  </mat-card-content>
+</mat-card>

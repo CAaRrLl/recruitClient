@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>广州大学人才招聘</title>
+  <base href="/recruitMgr">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="./src/assets/icon/favicon.ico">
+  <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+</head>
+<body>
+  <div class="debug" style="width: 100%;overflow-y: scroll;max-height: 30%;bottom:0;position: fixed;z-index: 1000;">
+    <!--由于pc微信上调试困难，调试状态下该处用于输出日志报错内容便于调试-->
+  </div>
+  <!--todo 原样式会导致手机端无法滑动-->
+  <!--<app-root style="width: 100%;height:100%;position: fixed;top:0;left:0;">-->
+  <app-root style="width: 100%;height:100%;top:0;left:0;">
+    <!--加载动画效果s-->
+    <style>
+      app-root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #bff8fa;
+        text-transform: uppercase;
+        font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen-Sans,
+        Ubuntu,
+        Cantarell,
+        Helvetica,
+        sans-serif;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      }
+      body {
+        /* background: #42c4fa; */
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes dots {
+        50% {
+          transform: translateY(-.4rem);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .d {
+        animation: dots 1.5s ease-out infinite;
+      }
+      .d-2 {
+        animation-delay: .5s;
+      }
+      .d-3 {
+        animation-delay: 1s;
+      }
+    </style>
+    <!-- 欢迎来到广大招聘系统<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span> -->
+    <!--加载动画效果e-->
+  </app-root>
+</body>
+</html>

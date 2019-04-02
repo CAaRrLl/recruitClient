@@ -1,0 +1,9 @@
+<div *ngIf="state" class="cg flash center active" [hidden]="hidden">
+  <i class="ui close icon" (click)="close()"></i>
+  <div class="outer">
+    <div class="{{state.type+' active message'}}">
+      <i class="ui smile icon ng-scope"></i>
+      <span class="ng-binding">{{state.msg}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!--上传,下载考核协议 id 11 为百人计划上传（包含洽谈结果） 22为新进讲师上传（无洽谈结果）  id 12 为下载  id 13为打回修改，重新上传-->
+
+<div *ngIf="pcsid === 11 || pcsid === 22 || pcsid === 13" class="div-margin">
+  <mat-card align="center">
+    <div  >
+    <mat-card-title>
+      {{pcsName}}
+    </mat-card-title>
+    </div>
+    <mat-card-content>
+      <div *ngIf="pcsid === 11" class="div-margin">
+        <mat-form-field>
+          <mat-select [(value)]="selected" (valueChange)="onSelectChange()">
+            <mat-option value="none" disabled>请选择</mat-option>
+            <mat-option value="accept">通过</mat-option>
+            <mat-option value="refuse">拒绝</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- 文件上传 -->
+      <div *ngIf="passPcs === true || pcsid === 22 || pcsid === 13" class="div-margin">
+        <mat-card-subtitle><span class="span-style">{{status}}</span>请选择上传考核协议</mat-card-subtitle>
+        <cst-file-upload [item]="item" [readonly]="isReadlyOnly"></cst-file-upload>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-button (click)="makeSure()">确定</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="pcsid === 12" class="div-margin">
+<mat-card align="center">
+    <mat-card-title>{{pcsName}}</mat-card-title>
+  <mat-card-content>
+    <cst-file-upload [item]="item" [readonly]="isReadlyOnly"></cst-file-upload>
+    <div class="div-margin" style="margin-top: 5%">
+      <mat-checkbox [checked]="ischecked" (change)="onCheck()">已下载并且审核考核协议完毕。</mat-checkbox>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="ischecked === true">
+    <button mat-button class="btn-make-sure" (click)="onPass()">通过</button>
+    <button mat-button class="btn-make-sure" (click)="onReview()">打回修改</button>
+  </mat-card-actions>
+</mat-card>
+</div>
